@@ -6,12 +6,12 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:17:32 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 12:19:01 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/02/28 12:37:21 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef 2048_H
 # define 2048_H
-int		*generate_grid(int grid_size);
-int		new_number(&grid, grid_size);
+int		**generate_grid(int grid_size);
+int		new_number(int **grid, int grid_size);
 #endif
