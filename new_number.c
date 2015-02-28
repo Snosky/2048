@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 13:41:37 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 17:28:32 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/02/28 19:38:29 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		*get_free_tile(int **grid, int grid_size)
 	int	x_rand;
 	int	y_rand;
 	int	stop;
-	
+
 	stop = 1;
 	srand(time(NULL));
 	while (stop)

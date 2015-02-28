@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 13:22:36 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 19:04:05 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/02/28 20:06:59 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,16 @@ int		is_blocked(int **grid, int grid_size)
 	int x;
 
 	y = 0;
-	x = 0;
 	while (y < grid_size)
 	{
-		printw("1");
+		x = 0;
 		while (x < grid_size)
 		{
-		printw("2");
-			if (try_left(grid, y, x, grid_size) ||
-					try_right(grid, y, x, grid_size) ||
-					try_top(grid, y, x, grid_size) ||
-					try_bottom(grid, y, x, grid_size))
+			if (try_left(grid, y, x, grid_size) != 0 ||
+					try_right(grid, y, x, grid_size) != 0 ||
+					try_top(grid, y, x, grid_size) != 0 ||
+					try_bottom(grid, y, x, grid_size) != 0)
 			{
-				printw("3");
 				return (0);
 			}
 			x++;

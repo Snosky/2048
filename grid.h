@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:17:32 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 18:59:30 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/02/28 20:46:20 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@
 # include <time.h>
 # include <ncurses.h>
 
+enum	e_const
+{
+	WIN_VALUE = 2048
+};
+
 int		**generate_grid(int grid_size);
 void	new_number(int **grid, int grid_size, int force_two);
 void	show_grid(int **grid, int grid_size);
-int		move_grid(int ch, int **grid, int grid_size);
+int		move_grid(int ch, int **grid, int grid_size, int *win);
 int		is_blocked(int **grid, int grid_size);
 
 int		*try_left(int **grid, int y, int x, int grid_size);
