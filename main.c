@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:29:06 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 17:25:35 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/02/28 19:05:01 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,15 @@ int		main(int ac, char **av)
 		ch = getch();
 		if (ch == 65 || ch == 66 || ch == 67 || ch == 68)
 		{
-			move_grid(ch, grid, grid_size);
-			new_number(grid, grid_size, 0);
+			if (move_grid(ch, grid, grid_size))
+				new_number(grid, grid_size, 0);
 			refresh();
+			if (is_blocked(grid, grid_size))
+			{
+				printw("PERDU");
+			}
 		}
+		wclear(stdscr);
 	}
 	endwin();
 	return (0);
