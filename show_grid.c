@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2048.h                                             :+:      :+:    :+:   */
+/*   show_grid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/28 12:17:32 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 13:04:50 by tpayen           ###   ########.fr       */
+/*   Created: 2015/02/28 16:34:22 by tpayen            #+#    #+#             */
+/*   Updated: 2015/02/28 17:44:13 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef 2048_H
-# define 2048_H
-int		**generate_grid(int grid_size);
-int		new_number(int **grid, int grid_size);
+#include "grid.h"
 
-int		*try_left(int **grid, int y, int x);
-int		*try_top(int **grid, int y, int x);
-int		*try_right(int **grid, int y, int x, int grid_size);
-int		*try_bottom(int **grid, int y, int x, int grid_size);
-#endif
+void	show_grid(int **grid, int grid_size)
+{
+	int x;
+	int y;
+
+	y = 0;
+	while (y < grid_size)
+	{
+		x = 0;
+		while (x < grid_size)
+		{
+			mvprintw(y, x, "%d", grid[y][x]);
+			x++;
+		}
+		printw("\n");
+		y++;
+	}
+}

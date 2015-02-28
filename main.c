@@ -1,52 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_test0.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/28 14:02:46 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 15:19:58 by tpayen           ###   ########.fr       */
+/*   Created: 2015/02/28 16:29:06 by tpayen            #+#    #+#             */
+/*   Updated: 2015/02/28 17:25:35 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grid.h"
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	int grid_size;
 	int	**grid;
-	int	x;
-	int	y;
+	int	grid_size;
 	int ch;
 
-	y = 0;
+	grid_size = 4;
 	if (ac == 2)
 		grid_size = ft_atoi(av[1]);
-	else
-		grid_size = 4;
 	grid = generate_grid(grid_size);
-
 	initscr();
 	clear();
 	noecho();
-	while (ch != 27)
+	while (ch != 32)
 	{
-		while (y < grid_size)
-		{
-			x = 0;
-			while (x < grid_size)
-			{
-				mvprintw(y, x, "%d", grid[y][x]);
-				x++;
-			}
-			mvprintw(y + 1, x + 1, "\n");
-			y++;
-		}
+		show_grid(grid, grid_size);
 		ch = getch();
-		if (ch == KEY_LEFT)
-			printw("YO");
-		refresh();
+		if (ch == 65 || ch == 66 || ch == 67 || ch == 68)
+		{
+			move_grid(ch, grid, grid_size);
+			new_number(grid, grid_size, 0);
+			refresh();
+		}
 	}
 	endwin();
 	return (0);
