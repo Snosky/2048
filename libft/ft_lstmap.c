@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/15 18:28:51 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/21 19:31:10 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int	**grid;
-	int	y;
+	t_list	*ret;
+	t_list	*tmp;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	ret = NULL;
+	while (lst != NULL)
+	{
+		if (!(tmp = ft_lstnew(lst->content, lst->content_size)))
+			return (NULL);
+		ft_lstpush(&ret, (*f)(tmp));
+		lst = lst->next;
+		free(tmp);
+	}
+	return (ret);
 }

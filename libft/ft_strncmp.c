@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/14 16:14:28 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/19 16:00:30 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	**grid;
-	int	y;
-
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	return (ft_memcmp(s1, s2, n));
 }

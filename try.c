@@ -6,11 +6,11 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:31:52 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 13:03:28 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/02/28 14:48:02 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "2048.h"
+#include "grid.h"
 
 int		*try_left(int **grid, int y, int x)
 {
@@ -22,7 +22,9 @@ int		*try_left(int **grid, int y, int x)
 	while (x >= 0)
 	{
 		x--;
-		if (grid[y][x] == try)
+		if (grid[y][x] != try && grid[y][x] != 0)
+			break ;
+		else if (grid[y][x] == try)
 			return (&(grid[y][x]));
 	}
 	return (0);
@@ -35,10 +37,12 @@ int		*try_right(int **grid, int y, int x, int grid_size)
 	if (x == grid_size - 1 || grid[y][x] == 0)
 		return (0);
 	try = grid[y][x];
-	while (x <= grid_size - 1)
+	while (x < grid_size)
 	{
 		x++;
-		if (grid[y][x] == try)
+		if (grid[y][x] != try && grid[y][x] != 0)
+			break ;
+		else if (grid[y][x] == try)
 			return (&(grid[y][x]));
 	}
 	return (0);
@@ -54,7 +58,9 @@ int		*try_top(int **grid, int y, int x)
 	while (y >= 0)
 	{
 		y--;
-		if (grid[y][x] == try)
+		if (grid[y][x] != try && grid[y][x] != 0)
+			break ;
+		else if (grid[y][x] == try)
 			return (&(grid[y][x]));
 	}
 	return (0);
@@ -67,10 +73,12 @@ int		*try_bottom(int **grid, int y, int x, int grid_size)
 	if (x == grid_size - 1 || grid[y][x] == 0)
 		return (0);
 	try = grid[y][x];
-	while (y <= grid_size - 1)
+	while (y < grid_size)
 	{
 		y--;
-		if (grid[y][x] == try)
+		if (grid[y][x] != try && grid[y][x] != 0)
+			break ;
+		else if (grid[y][x] == try)
 			return (&(grid[y][x]));
 	}
 	return (0);

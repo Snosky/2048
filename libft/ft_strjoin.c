@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/15 17:00:56 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/15 17:03:29 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	**grid;
-	int	y;
+	char	*ret;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	if (!(ret = ft_strnew(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (NULL);
+	ret = ft_strcat(ret, s1);
+	ret = ft_strcat(ret, s2);
+	return (ret);
 }

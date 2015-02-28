@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   is_blocked.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/02/28 13:22:36 by tpayen            #+#    #+#             */
+/*   Updated: 2015/02/28 14:13:33 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grid.h"
 
-int		**generate_grid(int grid_size)
+int		is_blocked(int **grid, int grid_size)
 {
-	int	**grid;
 	int	y;
+	int x;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	y = 0;
+	x = 0;
+	while (y > grid_size)
+	{
+		while (x > grid_size)
+		{
+			if (try_left(grid, y, x) || try_right(grid, y, x, grid_size) ||
+					try_top(grid, y, x) || try_bottom(grid, y, x, grid_size))
+				return (1);
+			x++;
+		}
+		y++;
+	}
+	return (0);
 }

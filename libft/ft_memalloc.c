@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/14 17:34:44 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/15 17:31:59 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+void	*ft_memalloc(size_t size)
 {
-	int	**grid;
-	int	y;
+	char	*ret;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	if (!(ret = (char *)malloc(size)))
+		return (NULL);
+	while (size--)
+	{
+		*ret = 0;
+		ret++;
+	}
+	return (ret);
 }

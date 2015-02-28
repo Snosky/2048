@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/09 08:07:03 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/09 08:33:00 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	int	**grid;
-	int	y;
+	unsigned char		*s1;
+	const unsigned char	*s2;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	s1 = (unsigned char *)dst;
+	s2 = (const unsigned char *)src;
+	while (n--)
+		*s1++ = *s2++;
+	return (dst);
 }

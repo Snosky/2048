@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/14 16:01:35 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/20 16:09:50 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+char	*ft_strrchr(const char *s, int c)
 {
-	int	**grid;
-	int	y;
+	char	*s_t;
+	char	*last_occ;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	s_t = (char *)s;
+	last_occ = NULL;
+	while (*s_t)
+	{
+		if (*s_t == c)
+			last_occ = s_t;
+		s_t++;
+	}
+	if (c == 0)
+		return (s_t);
+	if (last_occ)
+		return (last_occ);
+	return (NULL);
 }

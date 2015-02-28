@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/15 18:06:11 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/15 18:10:21 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+void	*ft_realloc(void *ptr, size_t old_size, size_t size)
 {
-	int	**grid;
-	int	y;
+	void	*ret;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	if (!ptr || !(ret = (void *)malloc(sizeof(void) * size)))
+		return (NULL);
+	if (old_size > size)
+		ft_memcpy(ret, ptr, (size) ? size : sizeof(void));
+	else
+		ft_memcpy(ret, ptr, old_size);
+	ft_memdel(&ptr);
+	return (ret);
 }

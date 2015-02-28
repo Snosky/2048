@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/09 08:14:38 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/19 15:30:09 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int	**grid;
-	int	y;
+	unsigned char		*s1;
+	const unsigned char	*s2;
+	size_t				i;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	if (!dst || !src)
+		return (NULL);
+	i = 0;
+	s1 = (unsigned char *)dst;
+	s2 = (const unsigned char *)src;
+	while (i < n)
+	{
+		if ((s1[i] = s2[i]) == (unsigned char)c)
+			return (&(s1[i + 1]));
+		i++;
+	}
+	return (NULL);
 }

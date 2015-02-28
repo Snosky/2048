@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   generate_grid.c                                    :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 14:41:51 by tpayen           ###   ########.fr       */
+/*   Created: 2015/01/14 15:41:36 by tpayen            #+#    #+#             */
+/*   Updated: 2015/01/21 14:31:50 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "grid.h"
+#include "libft.h"
 
-int		**generate_grid(int grid_size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	**grid;
-	int	y;
+	size_t	i;
+	size_t	dst_l;
+	size_t	src_l;
 
-	y = grid_size;
-	if (!(grid = (int **)malloc(sizeof(int *) * grid_size)))
-		return (0);
-	while (y)
-		if (!(grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
-			return (0);
-	new_number(grid, grid_size, 1);
-	new_number(grid, grid_size, 0);
-	return (grid);
+	i = 0;
+	dst_l = ft_strlen(dst);
+	src_l = ft_strlen(src);
+	if (!size)
+		return (dst_l);
+	if (size - 1 <= dst_l)
+		return (src_l + size);
+	while (dst_l + i < size - 1)
+	{
+		dst[dst_l + i] = src[i];
+		i++;
+	}
+	dst[dst_l + i] = 0;
+	return (dst_l + src_l);
 }
