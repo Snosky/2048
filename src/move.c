@@ -6,19 +6,21 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:49:43 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 17:41:38 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 18:17:11 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grid.h"
 
-static int	make_calc(int *grid, int *tile)
+static int	make_calc(int *grid, int *tile, int *old_tile)
 {
-	if (*tile != 0)
-	{
-		*grid *= 2;
-		*tile = 0;
-	}
+	if (old_tile != grid && old_tile != tile)
+		if (*tile != 0)
+		{
+			*grid *= 2;
+			*tile = 0;
+		}
+	old_tile = tile;
 	if (*grid == WIN_VALUE)
 		return (1);
 	return (0);
@@ -41,15 +43,17 @@ static int	v_move_r(t_grid *grid, int *(*f)(t_grid *, int, int, int), int *win)
 	int	y;
 	int	x;
 	int	*tile;
+	int	*old_tile;
 
 	y = grid->size;
 	move = 0;
+	old_tile = 0;
 	while (--y >= 0)
 	{
 		x = grid->size;
 		while (--x >= 0)
 			if (grid->grid[y][x] && (tile = (*f)(grid, y, x, 0)) && *tile != 0)
-				*win += make_calc(&(grid->grid[y][x]), tile);
+				*win += make_calc(&(grid->grid[y][x]), tile, old_tile);
 		x = grid->size;
 		while (--x >= 0)
 			if (grid->grid[y][x] && (tile = (*f)(grid, y, x, 1)) && *tile == 0)
@@ -64,15 +68,17 @@ static int	v_move(t_grid *grid, int *(*f)(t_grid *, int, int, int), int *win)
 	int	x;
 	int	*tile;
 	int	move;
+	int	*old_tile;
 
 	y = -1;
 	move = 0;
+	old_tile = 0;
 	while (++y < grid->size)
 	{
 		x = -1;
 		while (++x < grid->size)
 			if (grid->grid[y][x] && (tile = (*f)(grid, y, x, 0)) && *tile != 0)
-				*win += make_calc(&(grid->grid[y][x]), tile);
+				*win += make_calc(&(grid->grid[y][x]), tile, old_tile);
 		x = -1;
 		while (++x < grid->size)
 			if (grid->grid[y][x] && (tile = (*f)(grid, y, x, 1)) && *tile == 0)
