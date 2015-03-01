@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:34:22 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 23:09:35 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 13:16:17 by fvelay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	print_grid(int grid_size, int w_y, int w_x)
 		mvwvline(stdscr, 1, (w_x / grid_size) * i, '|', w_y - 2);
 		i++;
 	}
-	
 }
 
 void	show_grid(int **grid, int grid_size, int w_y, int w_x)

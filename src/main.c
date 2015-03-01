@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:29:06 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 23:12:20 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 13:15:46 by fvelay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		main(int ac, char **av)
 		show_grid(grid, grid_size, w_y, w_x);
 		ch = getch();
 		if (!make_all(ch, grid, grid_size))
-			break;
+			break ;
 		refresh();
 	}
 	endwin();
