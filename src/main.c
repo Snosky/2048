@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:29:06 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 14:51:05 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 15:10:41 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int		main(int ac, char **av)
 	grid = generate_grid(get_grid_size(ac, av));
 	bad_win_value();
 	initscr();
+	noecho();
 	keypad(stdscr, true);
 	while (ch != 27)
 	{
