@@ -6,11 +6,11 @@
 #    By: fvelay <fvelay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/03 17:51:03 by fvelay            #+#    #+#              #
-#    Updated: 2015/01/19 14:32:56 by fvelay           ###   ########.fr        #
+#    Updated: 2015/03/01 14:48:46 by tpayen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-STATIC_EXE	= 2048
+STATIC_EXE	= game_2048
 
 SRC = 	   try.c \
 		   main.c \

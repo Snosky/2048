@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 13:41:37 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 19:38:29 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 13:54:19 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int		*get_free_tile(int **grid, int grid_size)
 	return (&(grid[y_rand][x_rand]));
 }
 
-void	new_number(int **grid, int grid_size, int force_two)
+void	new_number(t_grid *grid, int force_two)
 {
 	int	*free_tile;
 
-	free_tile = get_free_tile(grid, grid_size);
+	free_tile = get_free_tile(grid->grid, grid->size);
 	srand(time(NULL));
 	if (force_two)
 		*free_tile = 2;

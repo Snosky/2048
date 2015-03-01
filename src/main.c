@@ -6,25 +6,22 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:29:06 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 13:15:46 by fvelay           ###   ########.fr       */
+/*   Updated: 2015/03/01 14:51:05 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grid.h"
 
-int		make_all(int ch, int **grid, int grid_size)
+int		make_all(int ch, t_grid *grid, int *win)
 {
-	int	win;
-
-	win = 0;
 	if (ch == 258 || ch == 259 || ch == 260 || ch == 261)
 	{
-		if (move_grid(ch, grid, grid_size, &win))
-			new_number(grid, grid_size, 0);
+		if (move_grid(ch, grid, win))
+			new_number(grid, 0);
 		wclear(stdscr);
-		if (win)
+		if (*win == 1)
 			mvprintw(10, 10, "YOU WIN");
-		if (is_blocked(grid, grid_size))
+		if (is_blocked(grid))
 			mvprintw(10, 10, "GAME OVER");
 	}
 	return (1);
@@ -54,26 +51,36 @@ int		resize_box(int *w_y, int *w_x)
 	return (0);
 }
 
+void	bad_win_value(void)
+{
+	if ((WIN_VALUE & (WIN_VALUE - 1)))
+	{
+		ft_putstr("Please change your win value");
+		exit(1);
+	}
+}
+
 int		main(int ac, char **av)
 {
-	int	**grid;
-	int	grid_size;
-	int ch;
-	int	w_y;
-	int	w_x;
+	t_grid	*grid;
+	int		ch;
+	int		win;
+	int		w_y;
+	int		w_x;
 
-	grid_size = get_grid_size(ac, av);
-	grid = generate_grid(grid_size);
+	ch = 0;
+	win = 0;
+	grid = generate_grid(get_grid_size(ac, av));
+	bad_win_value();
 	initscr();
 	keypad(stdscr, true);
 	while (ch != 27)
 	{
 		if (resize_box(&w_y, &w_x))
 			wclear(stdscr);
-		box(stdscr, '|', '-');
-		show_grid(grid, grid_size, w_y, w_x);
+		show_grid(grid, w_y, w_x);
 		ch = getch();
-		if (!make_all(ch, grid, grid_size))
+		if (!make_all(ch, grid, &win))
 			break ;
 		refresh();
 	}

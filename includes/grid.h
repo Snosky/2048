@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:17:32 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 12:25:43 by fvelay           ###   ########.fr       */
+/*   Updated: 2015/03/01 14:51:47 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,19 @@ enum	e_const
 	WIN_VALUE = 2048
 };
 
-int		**generate_grid(int grid_size);
-void	new_number(int **grid, int grid_size, int force_two);
-void	show_grid(int **grid, int grid_size, int w_y, int w_x);
-int		move_grid(int ch, int **grid, int grid_size, int *win);
-int		is_blocked(int **grid, int grid_size);
+typedef struct	s_grid
+{
+	int	**grid;
+	int	size;
+}				t_grid;
 
-int		*try_left(int **grid, int y, int x, int grid_size);
-int		*try_right(int **grid, int y, int x, int grid_size);
-int		*try_top(int **grid, int y, int x, int grid_size);
-int		*try_bottom(int **grid, int y, int x, int grid_size);
+t_grid			*generate_grid(int grid_size);
+void			new_number(t_grid *grid, int force_two);
+void			show_grid(t_grid *grid, int w_y, int w_x);
+int				move_grid(int ch, t_grid *grid, int *win);
+int				is_blocked(t_grid *grid);
+int				*try_left(t_grid *grid, int y, int x, int only_space);
+int				*try_right(t_grid *grid, int y, int x, int only_space);
+int				*try_top(t_grid *grid, int y, int x, int only_space);
+int				*try_bottom(t_grid *grid, int y, int x, int only_space);
 #endif
