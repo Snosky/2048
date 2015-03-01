@@ -6,13 +6,13 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:17:32 by tpayen            #+#    #+#             */
-/*   Updated: 2015/02/28 22:10:47 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 12:25:43 by fvelay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GRID_H
 # define GRID_H
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
 # include <time.h>
 # include <ncurses.h>
