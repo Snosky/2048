@@ -6,7 +6,7 @@
 #    By: fvelay <fvelay@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/03 17:51:03 by fvelay            #+#    #+#              #
-#    Updated: 2015/03/01 14:48:46 by tpayen           ###   ########.fr        #
+#    Updated: 2015/03/01 18:22:18 by tpayen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ STATIC_DIR	= static
 LIBFT_STATIC= libft/libft.a
 LIBFT_HEAD	= libft/
 
-cc			= gcc
+CC			= gcc
 FLAGS		= -Wall -Wextra -Werror
 CURSE		= -lncurses
 
