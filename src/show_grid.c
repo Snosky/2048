@@ -6,13 +6,13 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:34:22 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 14:07:54 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 17:41:55 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grid.h"
 
-void	print_grid(int grid_size, int w_y, int w_x)
+static void	print_grid(int grid_size, int w_y, int w_x)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ void	print_grid(int grid_size, int w_y, int w_x)
 	}
 }
 
-void	show_grid(t_grid *grid, int w_y, int w_x)
+void		show_grid(t_grid *grid, int w_y, int w_x)
 {
 	int x;
 	int y;

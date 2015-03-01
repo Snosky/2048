@@ -6,7 +6,7 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 12:17:32 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 14:51:47 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 16:24:52 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct	s_grid
 	int	size;
 }				t_grid;
 
-t_grid			*generate_grid(int grid_size);
+t_grid			*generate_grid(int grid_size, int rand);
 void			new_number(t_grid *grid, int force_two);
 void			show_grid(t_grid *grid, int w_y, int w_x);
 int				move_grid(int ch, t_grid *grid, int *win);

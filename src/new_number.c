@@ -6,13 +6,13 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 13:41:37 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 13:54:19 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 17:41:45 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grid.h"
 
-int		*get_free_tile(int **grid, int grid_size)
+static int	*get_free_tile(int **grid, int grid_size)
 {
 	int	x_rand;
 	int	y_rand;
@@ -31,7 +31,7 @@ int		*get_free_tile(int **grid, int grid_size)
 	return (&(grid[y_rand][x_rand]));
 }
 
-void	new_number(t_grid *grid, int force_two)
+void		new_number(t_grid *grid, int force_two)
 {
 	int	*free_tile;
 

@@ -6,13 +6,13 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/27 20:26:40 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 14:50:30 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 16:24:02 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grid.h"
 
-t_grid	*generate_grid(int grid_size)
+t_grid	*generate_grid(int grid_size, int rand)
 {
 	t_grid	*grid;
 	int		y;
@@ -26,7 +26,10 @@ t_grid	*generate_grid(int grid_size)
 	while (y)
 		if (!(grid->grid[--y] = (int *)malloc(sizeof(int) * grid_size)))
 			return (0);
-	new_number(grid, 1);
-	new_number(grid, 0);
+	if (rand)
+	{
+		new_number(grid, 1);
+		new_number(grid, 0);
+	}
 	return (grid);
 }

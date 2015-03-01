@@ -6,13 +6,13 @@
 /*   By: tpayen <tpayen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/28 16:29:06 by tpayen            #+#    #+#             */
-/*   Updated: 2015/03/01 15:10:41 by tpayen           ###   ########.fr       */
+/*   Updated: 2015/03/01 17:42:11 by tpayen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "grid.h"
 
-int		make_all(int ch, t_grid *grid, int *win)
+static int	make_all(int ch, t_grid *grid, int *win)
 {
 	if (ch == 258 || ch == 259 || ch == 260 || ch == 261)
 	{
@@ -27,7 +27,7 @@ int		make_all(int ch, t_grid *grid, int *win)
 	return (1);
 }
 
-int		get_grid_size(int ac, char **av)
+static int	get_grid_size(int ac, char **av)
 {
 	if (ac == 1)
 		return (4);
@@ -35,7 +35,7 @@ int		get_grid_size(int ac, char **av)
 		return (ft_atoi(av[1]));
 }
 
-int		resize_box(int *w_y, int *w_x)
+static int	resize_box(int *w_y, int *w_x)
 {
 	int	t_y;
 	int	t_x;
@@ -51,16 +51,16 @@ int		resize_box(int *w_y, int *w_x)
 	return (0);
 }
 
-void	bad_win_value(void)
+static void	bad_win_value(void)
 {
-	if ((WIN_VALUE & (WIN_VALUE - 1)))
+	if (WIN_VALUE == 1 || (WIN_VALUE & (WIN_VALUE - 1)))
 	{
 		ft_putstr("Please change your win value");
 		exit(1);
 	}
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_grid	*grid;
 	int		ch;
@@ -70,7 +70,7 @@ int		main(int ac, char **av)
 
 	ch = 0;
 	win = 0;
-	grid = generate_grid(get_grid_size(ac, av));
+	grid = generate_grid(get_grid_size(ac, av), 1);
 	bad_win_value();
 	initscr();
 	noecho();
